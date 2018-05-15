@@ -13,7 +13,7 @@ let qs = document.querySelector.bind(document);
 function lancerRequeteAjaxGet(url, callback) {
 	let xhr = new XMLHttpRequest();
 	xhr.open('get', url, true);
-    xhr.onload = callback;
+        xhr.onload = callback;
 	xhr.send();
 }
 
