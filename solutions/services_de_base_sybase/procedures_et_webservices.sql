@@ -1,7 +1,7 @@
 
 /* Il s'agit des procédures et services proposés durant le cours théoriques et les TP pour utiliser Sybase en temps que serveur web. */
 
-/* Ces codes ont été écrit par Mr Christian Lambeau. */
+/* Ces scripts ont été écrit par Mr Christian Lambeau. */
 
 --------------- Procédures / fonctions de base -------------------------------------------------------------------
 
