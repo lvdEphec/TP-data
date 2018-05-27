@@ -1,5 +1,6 @@
 
 /* Il s'agit des procédures et services proposés durant le cours théoriques et les TP pour utiliser Sybase en temps que serveur web. */
+/* Ces scripts sont un choix d'implémentation d'une structure spécifique, utilisable avec Sybase. */
 
 /* Ces scripts ont été écrit par Mr Christian Lambeau. */
 
