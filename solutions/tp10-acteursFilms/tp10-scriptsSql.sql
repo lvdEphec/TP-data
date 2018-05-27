@@ -21,7 +21,7 @@ ALTER PROCEDURE "DBA"."sp_getFilmsAct"(in id char(4) )
 result( html long varchar )
 begin
 -- 
-  call sa_set_http_header('Content-Type','text/html'); // header http
+  call sa_set_http_header('Content-Type','text/html; charset=utf-8'); // header http
   select list('<li onclick="getAutres('''
      || F.filmId || ''');" >' || filmTitre || '</li>','' order by filmTitre asc)
   from tbFilms as F
@@ -36,7 +36,7 @@ ALTER PROCEDURE "DBA"."sp_getActsFilm"(in film char(4),in act char(4) )
 result( html long varchar )
 begin
 -- 
-  call sa_set_http_header('Content-Type','text/html'); // header http
+  call sa_set_http_header('Content-Type','text/html; charset=utf-8'); // header http
   select list('<li onclick="suite(''' || A.actId || ''');" >'
      || actPrenom || ' ' || actNom || '</li>','' order by actNom asc)
   from tbActeurs as A
