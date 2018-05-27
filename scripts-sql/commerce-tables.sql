@@ -29,7 +29,7 @@ CREATE TABLE tbVendeurs (
   vilId         int NOT NULL,
   vendDateNaiss  date NULL,
   CONSTRAINT pkVend PRIMARY KEY (vendId),
-  CONSTRAINT fkVendVil FOREIGN KEY (vilId) REFERENCES tbVilles
+  CONSTRAINT fkVendVil FOREIGN KEY (vilId) REFERENCES tbVilles (vilId)
 );
 
 CREATE TABLE tbObjectifs (
@@ -37,7 +37,7 @@ CREATE TABLE tbObjectifs (
   moisId        DMois, 
   objChiffre    DNbPositif,
   CONSTRAINT pkObj PRIMARY KEY (vendId,moisId), 
-  CONSTRAINT fkObjVend FOREIGN KEY (vendId) REFERENCES tbVendeurs
+  CONSTRAINT fkObjVend FOREIGN KEY (vendId) REFERENCES tbVendeurs (vendId)
 );
 
 CREATE TABLE tbCategories (
@@ -53,7 +53,7 @@ CREATE TABLE tbProduits (
   prodPrix      DPrix, 
   categId       char(1) NULL,
   CONSTRAINT pkProd PRIMARY KEY (prodId), 
-  CONSTRAINT fkProdCat FOREIGN KEY (categId) REFERENCES tbCategories
+  CONSTRAINT fkProdCat FOREIGN KEY (categId) REFERENCES tbCategories (categId)
 );
 
 CREATE TABLE tbCommandes (
@@ -61,7 +61,7 @@ CREATE TABLE tbCommandes (
   vendId     char(3) NULL,
   moisId     DMois, 
   CONSTRAINT pkComm PRIMARY KEY (commId), 
-  CONSTRAINT fkCommProd FOREIGN KEY (vendId) REFERENCES tbVendeurs
+  CONSTRAINT fkCommProd FOREIGN KEY (vendId) REFERENCES tbVendeurs (vendId)
 );
 
 CREATE TABLE tbVentes (
@@ -69,9 +69,9 @@ CREATE TABLE tbVentes (
   ligneNo      smallint NOT NULL CONSTRAINT chkLign check(@col > 0),
   prodId       char(3) NOT NULL,
   prodQuant    DNbPositif,
-  CONSTRAINT pkVent PRIMARY KEY (commId,ligneNo),
+  CONSTRAINT pkVent PRIMARY KEY (commId, ligneNo),
   CONSTRAINT fkVentComm FOREIGN KEY (commId) REFERENCES tbCommandes (commId),
-  CONSTRAINT fkVentProd FOREIGN KEY (prodId) REFERENCES tbProduits
+  CONSTRAINT fkVentProd FOREIGN KEY (prodId) REFERENCES tbProduits (prodId)
 );
 
 ------------------------------------------------------------------------------
