@@ -18,7 +18,7 @@ CREATE DOMAIN DPrix decimal(6,2) check(@col > 0.0);
 CREATE TABLE tbVilles (
   vilId     int NOT NULL,
   vilLib    char(50) NOT NULL,
-  CONSTRAINT pkVill PRIMARY KEY (vilId) 
+  CONSTRAINT pk__tbVilles PRIMARY KEY (vilId) 
 );
 
 CREATE TABLE tbVendeurs (
@@ -28,23 +28,23 @@ CREATE TABLE tbVendeurs (
   vendSexe      Dsexe,
   vilId         int NOT NULL,
   vendDateNaiss  date NULL,
-  CONSTRAINT pkVend PRIMARY KEY (vendId),
-  CONSTRAINT fkVendVil FOREIGN KEY (vilId) REFERENCES tbVilles (vilId)
+  CONSTRAINT pk__tbVendeurs PRIMARY KEY (vendId),
+  CONSTRAINT fk__tbVendeurs__tbVilles FOREIGN KEY (vilId) REFERENCES tbVilles (vilId)
 );
 
 CREATE TABLE tbObjectifs (
   vendId        char(3) NOT NULL,
   moisId        DMois, 
   objChiffre    DNbPositif,
-  CONSTRAINT pkObj PRIMARY KEY (vendId,moisId), 
-  CONSTRAINT fkObjVend FOREIGN KEY (vendId) REFERENCES tbVendeurs (vendId)
+  CONSTRAINT pk__tbObjectifs PRIMARY KEY (vendId,moisId), 
+  CONSTRAINT fk__tbObjectifs__tbVendeurs FOREIGN KEY (vendId) REFERENCES tbVendeurs (vendId)
 );
 
 CREATE TABLE tbCategories (
   categId       DCateg, 
   categLib      char(30) NOT NULL,
   categTaxe     numeric(2,2) NULL,
-  CONSTRAINT pkCateg PRIMARY KEY (categId) 
+  CONSTRAINT pk__tbCategories PRIMARY KEY (categId) 
 );
 
 CREATE TABLE tbProduits (
@@ -52,16 +52,16 @@ CREATE TABLE tbProduits (
   prodLib       char(50) NOT NULL,
   prodPrix      DPrix, 
   categId       char(1) NULL,
-  CONSTRAINT pkProd PRIMARY KEY (prodId), 
-  CONSTRAINT fkProdCat FOREIGN KEY (categId) REFERENCES tbCategories (categId)
+  CONSTRAINT pk__tbProduits PRIMARY KEY (prodId), 
+  CONSTRAINT fk__tbProduits__tbCategories FOREIGN KEY (categId) REFERENCES tbCategories (categId)
 );
 
 CREATE TABLE tbCommandes (
   commId     int NOT NULL,
   vendId     char(3) NULL,
   moisId     DMois, 
-  CONSTRAINT pkComm PRIMARY KEY (commId), 
-  CONSTRAINT fkCommProd FOREIGN KEY (vendId) REFERENCES tbVendeurs (vendId)
+  CONSTRAINT pk__tbCommandes PRIMARY KEY (commId), 
+  CONSTRAINT fk__tbCommandes__tbProduits FOREIGN KEY (vendId) REFERENCES tbVendeurs (vendId)
 );
 
 CREATE TABLE tbVentes (
@@ -69,9 +69,9 @@ CREATE TABLE tbVentes (
   ligneNo      smallint NOT NULL CONSTRAINT chkLign check(@col > 0),
   prodId       char(3) NOT NULL,
   prodQuant    DNbPositif,
-  CONSTRAINT pkVent PRIMARY KEY (commId, ligneNo),
-  CONSTRAINT fkVentComm FOREIGN KEY (commId) REFERENCES tbCommandes (commId),
-  CONSTRAINT fkVentProd FOREIGN KEY (prodId) REFERENCES tbProduits (prodId)
+  CONSTRAINT pk__tbVentes PRIMARY KEY (commId, ligneNo),
+  CONSTRAINT fk__tbVentes__tbCommandes FOREIGN KEY (commId) REFERENCES tbCommandes (commId),
+  CONSTRAINT fk__tbVenttes_tbProduits FOREIGN KEY (prodId) REFERENCES tbProduits (prodId)
 );
 
 ------------------------------------------------------------------------------
