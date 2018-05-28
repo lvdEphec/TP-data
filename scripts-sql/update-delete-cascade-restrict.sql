@@ -22,7 +22,7 @@ select * from aliments;
 
 
 /* NOT NULL, ON UPDATE CASCADE */
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" NOT NULL
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments__categories" NOT NULL
 FOREIGN KEY ( "categId" ASC ) REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE CASCADE;
 /***/
 
@@ -86,9 +86,9 @@ UPDATE aliments set categID = 'Y' where categID = 'Z';
 
 
 /*********************************************/
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments__categories";
 /* NOT NULL, ON UPDATE RESTRICT */
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" NOT NULL
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments__categories" NOT NULL
 FOREIGN KEY ( "categId" ASC ) REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE RESTRICT;
 SELECT * from aliments;
 /* QUE VA-T-IL SE PASSER ? */
@@ -101,9 +101,9 @@ UPDATE aliments set categID = NULL where categID = 'Z';
 
 
 /*********************************************/
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments__categories";
 /*(NULL), ON UPDATE RESTRICT */
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" FOREIGN KEY ( "categId" ASC )
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments__categories" FOREIGN KEY ( "categId" ASC )
 REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE RESTRICT;
 /***/
 SELECT * from aliments;
@@ -117,14 +117,14 @@ DELETE from categories;
 
 
 /***  ajouter contrainte incorrecte? existence?  *************************/
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments__categories";
 ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "incorrect" NOT NULL FOREIGN KEY ( "categId" ASC )
 REFERENCES "DBA"."categories" ( "categLib" ) ON UPDATE RESTRICT;
 
 /*********************************************/
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments__categories";
 /* NOT NULL ON UPDATE CASCADE ON DELETE CASCADE */
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" NOT NULL FOREIGN KEY ( "categId" ASC )
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments__categories" NOT NULL FOREIGN KEY ( "categId" ASC )
 REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE CASCADE ON DELETE CASCADE;
 /***/
 SELECT * from aliments;
@@ -152,8 +152,8 @@ INSERT INTO "DBA"."aliments" ("alimId","alimLib","alimPrixKg","categId") VALUES(
 INSERT INTO "DBA"."aliments" ("alimId","alimLib","alimPrixKg","categId") VALUES(22,'poivre',0.19,'E');
 INSERT INTO "DBA"."aliments" ("alimId","alimLib","alimPrixKg","categId") VALUES(23,'girofle',0.21,'E');
 
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" NOT NULL FOREIGN KEY ( "categId" ASC )
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments__categories";
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments__categories" NOT NULL FOREIGN KEY ( "categId" ASC )
 REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE RESTRICT ON DELETE CASCADE; /* particulier! */
 
 SELECT * from categories;
