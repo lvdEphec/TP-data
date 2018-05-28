@@ -8,7 +8,7 @@ CREATE TABLE "DBA"."categories" (
 	"categLib" VARCHAR(20) NULL,
 	CONSTRAINT "pk__Categories" PRIMARY KEY ( "categId" ASC )
 );
-select * from tbCategories2
+select * from categories
 
 -- DROP TABLE aliments;
 CREATE TABLE "DBA"."aliments" (
@@ -22,7 +22,7 @@ select * from aliments;
 
 
 /* NOT NULL, ON UPDATE CASCADE */
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fkAliCat2" NOT NULL
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" NOT NULL
 FOREIGN KEY ( "categId" ASC ) REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE CASCADE;
 /***/
 
@@ -86,14 +86,14 @@ UPDATE aliments set categID = 'Y' where categID = 'Z';
 
 
 /*********************************************/
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fkAliCat2";
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
 /* NOT NULL, ON UPDATE RESTRICT */
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fkAliCat2" NOT NULL
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" NOT NULL
 FOREIGN KEY ( "categId" ASC ) REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE RESTRICT;
 SELECT * from aliments;
 /* QUE VA-T-IL SE PASSER ? */
 UPDATE categories set categID = 'F' where categID = 'Z';
-SELECT * from tbAliments2;
+SELECT * from aliments;
 /* QUE VA-T-IL SE PASSER ? */
 UPDATE aliments set categID = 'Y' where categID = 'Z';
 /* QUE VA-T-IL SE PASSER ? */
@@ -101,9 +101,9 @@ UPDATE aliments set categID = NULL where categID = 'Z';
 
 
 /*********************************************/
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fkAliCat2";
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
 /*(NULL), ON UPDATE RESTRICT */
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fkAliCat2" FOREIGN KEY ( "categId" ASC )
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" FOREIGN KEY ( "categId" ASC )
 REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE RESTRICT;
 /***/
 SELECT * from aliments;
@@ -117,23 +117,23 @@ DELETE from categories;
 
 
 /***  ajouter contrainte incorrecte? existence?  *************************/
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fkAliCat2";
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
 ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "incorrect" NOT NULL FOREIGN KEY ( "categId" ASC )
 REFERENCES "DBA"."categories" ( "categLib" ) ON UPDATE RESTRICT;
 
 /*********************************************/
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fkAliCat2";
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
 /* NOT NULL ON UPDATE CASCADE ON DELETE CASCADE */
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fkAliCat2" NOT NULL FOREIGN KEY ( "categId" ASC )
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" NOT NULL FOREIGN KEY ( "categId" ASC )
 REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE CASCADE ON DELETE CASCADE;
 /***/
 SELECT * from aliments;
 /* QUE VA-T-IL SE PASSER ? */
-DELETE FROM tbCategories2 where categID = 'E';
+DELETE FROM categories where categID = 'E';
 SELECT * from aliments;
 SELECT * from categories;
 /* QUE VA-T-IL SE PASSER ? */
-DELETE from tbCategories2;
+DELETE from categories;
 SELECT * from aliments;
 /* QUE VA-T-IL SE PASSER ? */
 ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "incorrect" NOT NULL
@@ -152,8 +152,8 @@ INSERT INTO "DBA"."aliments" ("alimId","alimLib","alimPrixKg","categId") VALUES(
 INSERT INTO "DBA"."aliments" ("alimId","alimLib","alimPrixKg","categId") VALUES(22,'poivre',0.19,'E');
 INSERT INTO "DBA"."aliments" ("alimId","alimLib","alimPrixKg","categId") VALUES(23,'girofle',0.21,'E');
 
-ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fkAliCat2";
-ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fkAliCat2" NOT NULL FOREIGN KEY ( "categId" ASC )
+ALTER TABLE "DBA"."aliments" DROP CONSTRAINT "fk__aliments_categories";
+ALTER TABLE "DBA"."aliments" ADD CONSTRAINT "fk__aliments_categories" NOT NULL FOREIGN KEY ( "categId" ASC )
 REFERENCES "DBA"."categories" ( "categId" ) ON UPDATE RESTRICT ON DELETE CASCADE; /* particulier! */
 
 SELECT * from categories;
@@ -203,8 +203,8 @@ DROP TABLE categories;
 CREATE TABLE "DBA"."categories" (
 	"categId" CHAR(1) NOT NULL,
 	"categLib" VARCHAR(20) NULL,
-    "testId" CHAR(1) NOT NULL,
-	CONSTRAINT "pkCateg" PRIMARY KEY ( "categId" ASC )
+    	"testId" CHAR(1) NOT NULL,
+	CONSTRAINT "pk__categories" PRIMARY KEY ( "categId" ASC )
 );
 
 SELECT * from aliments;
