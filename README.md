@@ -1,3 +1,3 @@
 # tp-data
 
-Scripts sybase utiles pour les 1TI
+Scripts utiles pour les 1TI
