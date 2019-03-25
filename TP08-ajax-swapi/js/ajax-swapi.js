@@ -1,4 +1,5 @@
 /* Script pour tester des requêtes en utilisant ajax et pour construire dynmiquement du code HTMLt */
+/* TODO : AJouter la JSDOC !!! */
 
 /************ CONSTANTES et variables globales **************/
 
