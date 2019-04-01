@@ -1,3 +1,5 @@
+"use strict";
+
 /* Script pour tester des requêtes en utilisant ajax et pour construire dynmiquement du code HTML */
 /* TODO : AJouter la JSDOC !!! */
 
@@ -9,7 +11,7 @@ const ID_LISTE_PERSONNAGES = "listePersonnages";
 
 // Objet faisant le lien entre le numéro de l'épisode du film et les personnages.
 // exemple : { "4" : ["https://swapi.co/api/people/1/", "https://swapi.co/api/people/2/", ...],  "1" : [...], ... } 
-var filmsLiensActeurs;
+let filmsLiensActeurs;
 
 
 /************ Fonctions utilitaires **************/
