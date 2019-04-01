@@ -28,7 +28,7 @@ function initialiser() {
     // Définit quelle fonction est appelée lorsque le choix de film change.
     // L'élément avec l'id "choixFilm" doit exister pour pouvoir lui ajouter un évènement,
     // cela est donc effectué après le chargement initial de la page dans la fonction "initialiser".
-    gid(ID_LISTE_FILMS).addEventListener('change',chargerPersonnages);
+    gid(ID_LISTE_FILMS).addEventListener('change', chargerPersonnages);
 
     // Requête Ajax et remplissage des titres dans la liste de choix.
     chargerTitres();
