@@ -3,6 +3,7 @@
 
 /************ CONSTANTES et variables globales **************/
 
+// les id de la page html sont enregistrés dans des constantes
 const ID_LISTE_FILMS = "choixFilm";
 const ID_LISTE_PERSONNAGES = "listePersonnages";
 
