@@ -21,7 +21,8 @@ function gid(id) {
 
 // Définit quelle fonction est appelée lorsque la page est chargée.
 // Attention, ici on référence la fonction, on ne l'exécute pas, donc pas de parenthèses ( ).
-window.addEventListener('load', initialiser);
+// Autre posibilité : // window.addEventListener('load', initialiser);
+document.addEventListener('DOMContentLoaded', initialiser);
 
 function initialiser() {
     // Définit quelle fonction est appelée lorsque le choix de film change.
