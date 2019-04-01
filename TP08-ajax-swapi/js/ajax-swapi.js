@@ -61,7 +61,7 @@ function remplirListeFilm() {
     // Attention, "this" ici est... subtile.
     // Il fait référence au contexte dans lequel la fonction est appelée.
     // Quand est-ce que "remplirListeFilm" est appelé? Lors du xhr.onload, soit lorsque le xhr recoit une bonne réponse.
-    // C'est le xhr qui appelle la fonction à ce moment. Le "this" dans cette fonction est donc la requête xhr.
+    // C'est le xhr qui appelle la fonction à ce moment. Le "this" dans cette fonction est donc l'objet xhr.
     // Cela nous permet d'accéder au responseText du xhr (n'hésitez pas à regarder les attributs de cet objet en console).
     // Le JSON.parse permet simplement de convertir la réponse JSON en objet javascript.
     let reponse = JSON.parse(this.responseText);
