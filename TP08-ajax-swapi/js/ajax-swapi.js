@@ -43,7 +43,7 @@ function chargerTitres() {
     // on crée une nouvelle requête
     let xhr = new XMLHttpRequest();
 
-    // on précise qu'il s'agit d'un GET, l'adresse et le fait qu'elle soit asynchrone
+    // on précise qu'il s'agit d'un GET, l'adresse url et le fait qu'elle soit asynchrone
     xhr.open('get', 'https://swapi.co/api/films/', true);
 
     // on indique quelle fonction exécuter lorsqu'on reçoit la réponse et que tout va bien
