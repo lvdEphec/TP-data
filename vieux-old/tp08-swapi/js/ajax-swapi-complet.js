@@ -22,8 +22,9 @@
     }
 
     /************ Gestions du chargement initial de la page **************/
-
-    window.addEventListener('load', initialiser);
+    
+    document.addEventListener('DOMContentLoaded', initialiser);
+    // window.addEventListener('load', initialiser); //ok aussi, un chouia moins performant
 
     function initialiser() {
         gid(ID.listeFilms).addEventListener('change', chargerPersonnages);
