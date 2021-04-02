@@ -10,7 +10,9 @@ const ID_LISTE_FILMS = "choixFilm";
 const ID_LISTE_PERSONNAGES = "listePersonnages";
 
 // Objet faisant le lien entre le numéro de l'épisode du film et les personnages.
-// exemple : { "4" : ["https://swapi.co/api/people/1/", "https://swapi.co/api/people/2/", ...],  "1" : [...], ... } 
+// exemple : { "4" : ["https://swapi.co/api/people/1/", "https://swapi.co/api/people/2/", ...],  "1" : [...], ... }
+// exemple : { "4" : ["https://devweb.ephec.be/swapi/people/1/", "https://devweb.ephec.be/swapi/people/2/", ...],  "1" : [...], ... }
+
 let filmsLiensActeurs;
 
 
@@ -47,7 +49,8 @@ function chargerTitres() {
     let xhr = new XMLHttpRequest();
 
     // on précise qu'il s'agit d'un GET, l'adresse url et le fait qu'elle soit asynchrone
-    xhr.open('get', 'https://swapi.co/api/films/', true);
+    //xhr.open('get', 'https://swapi.co/api/films/', true);
+    xhr.open('get', 'https://devweb.ephec.be/swapi/films/', true);
 
     // on indique quelle fonction exécuter lorsqu'on reçoit la réponse et que tout va bien
     xhr.onload = remplirListeFilm;
