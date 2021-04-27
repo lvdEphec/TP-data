@@ -13,7 +13,7 @@ begin
   from tbActeurs
   order by actNom asc
 -- 
-end
+end;
 
 /* ***************************************************** */
 
@@ -28,7 +28,7 @@ begin
   join tbRoles as R on F.filmId = R.filmId
   where actId = id
 -- 
-end
+end;
 
 /* ***************************************************** */
 
@@ -44,7 +44,7 @@ begin
   where filmId = film
   and not(A.actId = act)
 -- 
-end
+end;
 
 
 /* ********** CREATION WEBSERVICES ********************** */
